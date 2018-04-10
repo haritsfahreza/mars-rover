@@ -6,128 +6,95 @@ import org.junit.Test;
 public class MarsRoverTest {
 
     @Test
-    public void testInitMaxCoordinate_givenUpperRightCoordinate_shouldReturnUpperRightCoordinate() {
-        int x = 3;
-        int y = 3;
-        MarsRover marsRover = new MarsRover(x, y);
-        Assert.assertEquals(x, marsRover.getMaximumX());
-        Assert.assertEquals(y, marsRover.getMaximumY());
+    public void constructor_givenUpperRightCoordinate_shouldSetMamaximumXimumXY() {
+        int maximumX = 3;
+        int maximumY = 3;
+        Plateu plateu = new Plateu(maximumX, maximumY);
+        Assert.assertEquals(maximumX, plateu.getMaximumX());
+        Assert.assertEquals(maximumY, plateu.getMaximumY());
     }
 
     @Test
-    public void testInitRoverCoordinate_givenRoverCoordinate_shouldReturnCurrentRoverCoordinate() {
-        int x = 3;
-        int y = 3;
-        int roverX = 2;
-        int roverY = 2;
-        MarsRover marsRover = new MarsRover(x, y, roverX, roverY);
-        Assert.assertEquals(roverX, marsRover.getCurrentX());
-        Assert.assertEquals(roverY, marsRover.getCurrentY());
+    public void constructor_givenUpperRightAndRoverCoordinate_shouldSetCurrentXY() {
+        int maximumX = 3;
+        int maximumY = 3;
+        int currentX = 2;
+        int currentY = 2;
+        Plateu plateu = new Plateu(maximumX, maximumY);
+        MarsRover marsRover = new MarsRover(plateu, currentX, currentY);
+        Assert.assertEquals(currentX, marsRover.getCurrentX());
+        Assert.assertEquals(currentY, marsRover.getCurrentY());
     }
 
     @Test
-    public void testChangeRoverOrientation_givenTurnRightCommand_shouldReturnEastOrientation() {
-        int x = 3;
-        int y = 3;
-        MarsRover marsRover = new MarsRover(x, y);
-        marsRover.move("R");
+    public void runCommands_givenRCommand_shouldSetCurrentOrientationToE() {
+        int maximumX = 3;
+        int maximumY = 3;
+        Plateu plateu = new Plateu(maximumX, maximumY);
+        MarsRover marsRover = new MarsRover(plateu);
+        marsRover.runCommands("R");
         Assert.assertEquals("E", marsRover.getCurrentOrientation());
     }
 
     @Test
-    public void testChangeRoverOrientation_givenTurnLeftCommand_shouldReturnWestOrientation() {
-        int x = 3;
-        int y = 3;
-        MarsRover marsRover = new MarsRover(x, y);
-        marsRover.move("L");
+    public void runCommands_givenLCommand_shouldSetCurrentOrientationToW() {
+        int maximumX = 3;
+        int maximumY = 3;
+        Plateu plateu = new Plateu(maximumX, maximumY);
+        MarsRover marsRover = new MarsRover(plateu);
+        marsRover.runCommands("L");
         Assert.assertEquals("W", marsRover.getCurrentOrientation());
     }
 
     @Test
-    public void testMoveRover_givenMoveCommand_shouldReturnCurrentYPlus1() {
-        int x = 3;
-        int y = 3;
-        int roverX = 2;
-        int roverY = 2;
-        MarsRover marsRover = new MarsRover(x, y, roverX, roverY);
-        marsRover.move("M");
-        Assert.assertEquals(roverY + 1, marsRover.getCurrentY());
+    public void runCommands_givenMCommandAndCurrentOrientationN_shouldAddOneToCurrentY() {
+        int maximumX = 3;
+        int maximumY = 3;
+        int currentX = 2;
+        int currentY = 2;
+        Plateu plateu = new Plateu(maximumX, maximumY);
+        MarsRover marsRover = new MarsRover(plateu, currentX, currentY);
+        marsRover.runCommands("M");
+        Assert.assertEquals(currentY + 1, marsRover.getCurrentY());
     }
 
     @Test
-    public void testMoveRover_givenMoveCommand_shouldReturnCurrentXPlus1() {
-        int x = 3;
-        int y = 3;
-        int roverX = 2;
-        int roverY = 2;
-        MarsRover marsRover = new MarsRover(x, y, roverX, roverY, "E");
-        marsRover.move("M");
-        Assert.assertEquals(roverX + 1, marsRover.getCurrentX());
+    public void runCommands_givenMCommandAndCurrentOrientationE_shouldAddOneToCurrentX() {
+        int maximumX = 3;
+        int maximumY = 3;
+        int currentX = 2;
+        int currentY = 2;
+        Plateu plateu = new Plateu(maximumX, maximumY);
+        MarsRover marsRover = new MarsRover(plateu, currentX, currentY, "E");
+        marsRover.runCommands("M");
+        Assert.assertEquals(currentX + 1, marsRover.getCurrentX());
     }
 
     @Test
-    public void testSerialMoveRover_givenMoveAndTurnLeftCommands_shouldReturn1OnCurrentX() {
-        int x = 5;
-        int y = 5;
-        int roverX = 1;
-        int roverY = 2;
-        MarsRover marsRover = new MarsRover(x, y, roverX, roverY, "N");
-        marsRover.move("LMLMLMLMM");
+    public void runCommands_givenLMLMLMLMMCommands_shouldSetCurrentXCurrentYCurrentOrientationTo13N() {
+        int maximumX = 5;
+        int maximumY = 5;
+        int currentX = 1;
+        int currentY = 2;
+        Plateu plateu = new Plateu(maximumX, maximumY);
+        MarsRover marsRover = new MarsRover(plateu, currentX, currentY, "N");
+        marsRover.runCommands("LMLMLMLMM");
         Assert.assertEquals(1, marsRover.getCurrentX());
-    }
-
-    @Test
-    public void testSerialMoveRover_givenMoveAndTurnLeftCommands_shouldReturn3OnCurrentY() {
-        int x = 5;
-        int y = 5;
-        int roverX = 1;
-        int roverY = 2;
-        MarsRover marsRover = new MarsRover(x, y, roverX, roverY, "N");
-        marsRover.move("LMLMLMLMM");
         Assert.assertEquals(3, marsRover.getCurrentY());
-    }
-
-    @Test
-    public void testSerialMoveRover_givenMoveAndTurnLeftCommands_shouldReturnNorthOnCurrentOrientiation() {
-        int x = 5;
-        int y = 5;
-        int roverX = 1;
-        int roverY = 2;
-        MarsRover marsRover = new MarsRover(x, y, roverX, roverY, "N");
-        marsRover.move("LMLMLMLMM");
         Assert.assertEquals("N", marsRover.getCurrentOrientation());
     }
 
     @Test
-    public void testSerialMoveRover_givenMoveAndTurnRightCommands_shouldReturn5OnCurrentX() {
-        int x = 5;
-        int y = 5;
-        int roverX = 3;
-        int roverY = 3;
-        MarsRover marsRover = new MarsRover(x, y, roverX, roverY, "E");
-        marsRover.move("MMRMMRMRRM");
+    public void runCommands_givenMMRMMRMRRMCommands_shouldSetCurrentXCurrentYCurrentOrientationTo51E() {
+        int maximumX = 5;
+        int maximumY = 5;
+        int currentX = 3;
+        int currentY = 3;
+        Plateu plateu = new Plateu(maximumX, maximumY);
+        MarsRover marsRover = new MarsRover(plateu, currentX, currentY, "E");
+        marsRover.runCommands("MMRMMRMRRM");
         Assert.assertEquals(5, marsRover.getCurrentX());
-    }
-
-    @Test
-    public void testSerialMoveRover_givenMoveAndTurnRightCommands_shouldReturn1OnCurrentY() {
-        int x = 5;
-        int y = 5;
-        int roverX = 3;
-        int roverY = 3;
-        MarsRover marsRover = new MarsRover(x, y, roverX, roverY, "E");
-        marsRover.move("MMRMMRMRRM");
         Assert.assertEquals(1, marsRover.getCurrentY());
-    }
-
-    @Test
-    public void testSerialMoveRover_givenMoveAndTurnRightCommands_shouldReturnEastOnCurrentOrientiation() {
-        int x = 5;
-        int y = 5;
-        int roverX = 3;
-        int roverY = 3;
-        MarsRover marsRover = new MarsRover(x, y, roverX, roverY, "E");
-        marsRover.move("MMRMMRMRRM");
         Assert.assertEquals("E", marsRover.getCurrentOrientation());
     }
 
