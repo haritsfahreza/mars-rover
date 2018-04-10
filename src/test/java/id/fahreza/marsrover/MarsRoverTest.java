@@ -36,5 +36,21 @@ public class MarsRoverTest {
         marsRover.move("L");
         Assert.assertEquals("W", marsRover.getCurrentOrientation());
     }
+    
+    @Test
+    public void testMoveRover_givenMoveCommand_shouldReturnCurrentYPlus1() {
+        int x = 3, y = 3, roverX = 2, roverY = 2;
+        MarsRover marsRover = new MarsRover(x, y, roverX, roverY);
+        marsRover.move("M");
+        Assert.assertEquals(roverY + 1, marsRover.getCurrentY());
+    }
+    
+    @Test
+    public void testMoveRover_givenMoveCommand_shouldReturnCurrentXPlus1() {
+        int x = 3, y = 3, roverX = 2, roverY = 2;
+        MarsRover marsRover = new MarsRover(x, y, roverX, roverY, "E");
+        marsRover.move("M");
+        Assert.assertEquals(roverX + 1, marsRover.getCurrentX());
+    }
 
 }

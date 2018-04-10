@@ -54,6 +54,16 @@ public class MarsRover {
             currentOrientation = currentOrientation + 1 > 3 ? 0 : currentOrientation + 1;
         } else if (command.equalsIgnoreCase("L")) {
             currentOrientation = currentOrientation - 1 < 0 ? 3 : currentOrientation - 1;
+        } else if (command.equalsIgnoreCase("M")) {
+            if (currentOrientation == 0) {
+                currentY = currentY + 1 > maximumY ? maximumY : currentY + 1;
+            } else if (currentOrientation == 1) {
+                currentX = currentX + 1 > maximumX ? maximumX : currentX + 1;
+            } else if (currentOrientation == 2) {
+                currentY = currentY - 1 < 0 ? 0 : currentY - 1;
+            } else if (currentOrientation == 3) {
+                currentX = currentX - 1 < 0 ? 0 : currentX - 1;
+            }
         }
     }
 
