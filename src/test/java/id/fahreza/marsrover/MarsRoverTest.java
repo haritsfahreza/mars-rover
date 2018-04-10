@@ -6,16 +6,7 @@ import org.junit.Test;
 public class MarsRoverTest {
 
     @Test
-    public void constructor_givenUpperRightCoordinate_shouldSetMaximumXY() {
-        int maximumX = 3;
-        int maximumY = 3;
-        Plateau plateau = new Plateau(maximumX, maximumY);
-        Assert.assertEquals(maximumX, plateau.getMaximumX());
-        Assert.assertEquals(maximumY, plateau.getMaximumY());
-    }
-
-    @Test
-    public void constructor_givenUpperRightAndRoverCoordinate_shouldSetCurrentXY() {
+    public void constructor_givenPlateauAndRoverCurrentXY_shouldSetCurrentXY() {
         int maximumX = 3;
         int maximumY = 3;
         int currentX = 2;
