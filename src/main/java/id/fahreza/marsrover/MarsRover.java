@@ -6,7 +6,11 @@ public class MarsRover {
 
     private final String[] ORIENTATIONS = new String[] { "N", "E", "S", "W" };
 
-    private int maximumX = 0, maximumY = 0, currentX = 0, currentY = 0, currentOrientation = 0;
+    private int maximumX = 0;
+    private int maximumY = 0;
+    private int currentX = 0;
+    private int currentY = 0;
+    private int currentOrientation = 0;
 
     public MarsRover(int maximumX, int maximumY) {
         this.maximumX = maximumX;

@@ -8,7 +8,8 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int maximumX = 0, maximumY = 0;
+        int maximumX = 0;
+        int maximumY = 0;
         List<MarsRover> marsRovers = new ArrayList<>();
 
         if (scanner.hasNextLine()) {
