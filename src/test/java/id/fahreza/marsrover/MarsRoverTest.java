@@ -6,12 +6,12 @@ import org.junit.Test;
 public class MarsRoverTest {
 
     @Test
-    public void constructor_givenUpperRightCoordinate_shouldSetMamaximumXimumXY() {
+    public void constructor_givenUpperRightCoordinate_shouldSetMaximumXY() {
         int maximumX = 3;
         int maximumY = 3;
-        Plateu plateu = new Plateu(maximumX, maximumY);
-        Assert.assertEquals(maximumX, plateu.getMaximumX());
-        Assert.assertEquals(maximumY, plateu.getMaximumY());
+        Plateau plateau = new Plateau(maximumX, maximumY);
+        Assert.assertEquals(maximumX, plateau.getMaximumX());
+        Assert.assertEquals(maximumY, plateau.getMaximumY());
     }
 
     @Test
@@ -20,8 +20,8 @@ public class MarsRoverTest {
         int maximumY = 3;
         int currentX = 2;
         int currentY = 2;
-        Plateu plateu = new Plateu(maximumX, maximumY);
-        MarsRover marsRover = new MarsRover(plateu, currentX, currentY);
+        Plateau plateau = new Plateau(maximumX, maximumY);
+        MarsRover marsRover = new MarsRover(plateau, currentX, currentY);
         Assert.assertEquals(currentX, marsRover.getCurrentX());
         Assert.assertEquals(currentY, marsRover.getCurrentY());
     }
@@ -30,8 +30,8 @@ public class MarsRoverTest {
     public void runCommands_givenRCommand_shouldSetCurrentOrientationToE() {
         int maximumX = 3;
         int maximumY = 3;
-        Plateu plateu = new Plateu(maximumX, maximumY);
-        MarsRover marsRover = new MarsRover(plateu);
+        Plateau plateau = new Plateau(maximumX, maximumY);
+        MarsRover marsRover = new MarsRover(plateau);
         marsRover.runCommands("R");
         Assert.assertEquals("E", marsRover.getCurrentOrientation());
     }
@@ -40,8 +40,8 @@ public class MarsRoverTest {
     public void runCommands_givenLCommand_shouldSetCurrentOrientationToW() {
         int maximumX = 3;
         int maximumY = 3;
-        Plateu plateu = new Plateu(maximumX, maximumY);
-        MarsRover marsRover = new MarsRover(plateu);
+        Plateau plateau = new Plateau(maximumX, maximumY);
+        MarsRover marsRover = new MarsRover(plateau);
         marsRover.runCommands("L");
         Assert.assertEquals("W", marsRover.getCurrentOrientation());
     }
@@ -52,8 +52,8 @@ public class MarsRoverTest {
         int maximumY = 3;
         int currentX = 2;
         int currentY = 2;
-        Plateu plateu = new Plateu(maximumX, maximumY);
-        MarsRover marsRover = new MarsRover(plateu, currentX, currentY);
+        Plateau plateau = new Plateau(maximumX, maximumY);
+        MarsRover marsRover = new MarsRover(plateau, currentX, currentY);
         marsRover.runCommands("M");
         Assert.assertEquals(currentY + 1, marsRover.getCurrentY());
     }
@@ -64,8 +64,8 @@ public class MarsRoverTest {
         int maximumY = 3;
         int currentX = 2;
         int currentY = 2;
-        Plateu plateu = new Plateu(maximumX, maximumY);
-        MarsRover marsRover = new MarsRover(plateu, currentX, currentY, "E");
+        Plateau plateau = new Plateau(maximumX, maximumY);
+        MarsRover marsRover = new MarsRover(plateau, currentX, currentY, "E");
         marsRover.runCommands("M");
         Assert.assertEquals(currentX + 1, marsRover.getCurrentX());
     }
@@ -76,8 +76,8 @@ public class MarsRoverTest {
         int maximumY = 5;
         int currentX = 1;
         int currentY = 2;
-        Plateu plateu = new Plateu(maximumX, maximumY);
-        MarsRover marsRover = new MarsRover(plateu, currentX, currentY, "N");
+        Plateau plateau = new Plateau(maximumX, maximumY);
+        MarsRover marsRover = new MarsRover(plateau, currentX, currentY, "N");
         marsRover.runCommands("LMLMLMLMM");
         Assert.assertEquals(1, marsRover.getCurrentX());
         Assert.assertEquals(3, marsRover.getCurrentY());
@@ -90,8 +90,8 @@ public class MarsRoverTest {
         int maximumY = 5;
         int currentX = 3;
         int currentY = 3;
-        Plateu plateu = new Plateu(maximumX, maximumY);
-        MarsRover marsRover = new MarsRover(plateu, currentX, currentY, "E");
+        Plateau plateau = new Plateau(maximumX, maximumY);
+        MarsRover marsRover = new MarsRover(plateau, currentX, currentY, "E");
         marsRover.runCommands("MMRMMRMRRM");
         Assert.assertEquals(5, marsRover.getCurrentX());
         Assert.assertEquals(1, marsRover.getCurrentY());

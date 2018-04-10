@@ -1,11 +1,11 @@
 package id.fahreza.marsrover;
 
-public class Plateu {
+public class Plateau {
 
     private int maximumX = 0;
     private int maximumY = 0;
 
-    public Plateu(int maximumX, int maximumY) {
+    public Plateau(int maximumX, int maximumY) {
         this.maximumX = maximumX;
         this.maximumY = maximumY;
     }

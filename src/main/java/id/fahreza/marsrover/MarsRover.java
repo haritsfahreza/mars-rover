@@ -6,33 +6,33 @@ public class MarsRover {
 
     private final String[] ORIENTATIONS = new String[] { "N", "E", "S", "W" };
 
-    private Plateu plateu;
+    private Plateau plateau;
     private int currentX = 0;
     private int currentY = 0;
     private int currentOrientation = 0;
 
-    public MarsRover(Plateu plateu) {
-        this.plateu = plateu;
+    public MarsRover(Plateau plateau) {
+        this.plateau = plateau;
     }
 
-    public MarsRover(Plateu plateu, int currentX, int currentY) {
-        this(plateu);
+    public MarsRover(Plateau plateau, int currentX, int currentY) {
+        this(plateau);
         this.currentX = currentX;
         this.currentY = currentY;
     }
 
-    public MarsRover(Plateu plateu, String currentOrientation) {
-        this(plateu);
+    public MarsRover(Plateau plateau, String currentOrientation) {
+        this(plateau);
         this.currentOrientation = Arrays.binarySearch(ORIENTATIONS, currentOrientation);
     }
 
-    public MarsRover(Plateu plateu, int currentX, int currentY, String currentOrientation) {
-        this(plateu, currentX, currentY);
+    public MarsRover(Plateau plateau, int currentX, int currentY, String currentOrientation) {
+        this(plateau, currentX, currentY);
         this.currentOrientation = Arrays.binarySearch(ORIENTATIONS, currentOrientation);
     }
 
-    public Plateu getPlateu() {
-        return plateu;
+    public Plateau getPlateu() {
+        return plateau;
     }
 
     public int getCurrentX() {
@@ -69,9 +69,9 @@ public class MarsRover {
 
     public void moveForward() {
         if (currentOrientation == 0) {
-            currentY = currentY + 1 > plateu.getMaximumY() ? plateu.getMaximumY() : currentY + 1;
+            currentY = currentY + 1 > plateau.getMaximumY() ? plateau.getMaximumY() : currentY + 1;
         } else if (currentOrientation == 1) {
-            currentX = currentX + 1 > plateu.getMaximumX() ? plateu.getMaximumX() : currentX + 1;
+            currentX = currentX + 1 > plateau.getMaximumX() ? plateau.getMaximumX() : currentX + 1;
         } else if (currentOrientation == 2) {
             currentY = currentY - 1 < 0 ? 0 : currentY - 1;
         } else if (currentOrientation == 3) {
