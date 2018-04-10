@@ -8,14 +8,12 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int maximumX = 0;
-        int maximumY = 0;
+        Plateau plateau = null;
         List<MarsRover> marsRovers = new ArrayList<>();
 
         if (scanner.hasNextLine()) {
             String[] lineArray = scanner.nextLine().split(" ");
-            maximumX = new Integer(lineArray[0]);
-            maximumY = new Integer(lineArray[1]);
+            plateau = new Plateau(new Integer(lineArray[0]), new Integer(lineArray[1]));
         }
 
         boolean isFinished = false;
@@ -26,11 +24,10 @@ public class Main {
                 break;
             if (!isFinished) {
                 String[] lineArray = line.split(" ");
-                marsRover = new MarsRover(maximumX, maximumY, new Integer(lineArray[0]), new Integer(lineArray[1]),
-                        lineArray[2]);
+                marsRover = new MarsRover(plateau, new Integer(lineArray[0]), new Integer(lineArray[1]), lineArray[2]);
                 isFinished = true;
             } else {
-                marsRover.move(line);
+                marsRover.runCommands(line);
                 marsRovers.add(marsRover);
                 isFinished = false;
             }
